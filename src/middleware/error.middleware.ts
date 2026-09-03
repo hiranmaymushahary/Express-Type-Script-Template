@@ -6,8 +6,8 @@ import { AppError } from "../utils/errors/app.error";
 export const genericErrorHandler = (err: AppError, req: Request, res: Response, next: NextFunction) => {
     console.log(err);
 
-    res.status(500).json({
+    res.status(err.statusCode).json({
         success: false,
-        message: "Internal Server Error"
+        message: err.message
     });
 }
