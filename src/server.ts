@@ -3,6 +3,8 @@ import { serverConfig} from "./config";
 import v1Router from "./router/v1/index.router";
 import v2Router from "./router/v2/index.router";
 import { genericErrorHandler } from './middleware/error.middleware';
+import logger from "./config/logger.config";
+
 
  
 
@@ -25,7 +27,8 @@ app.use("api/v2", v2Router);
 app.use(genericErrorHandler);
 
 app.listen(serverConfig.PORT, () => {
-  console.log(`Server is running on http://localhost:${serverConfig.PORT}`);
+  logger.info(`Server is running on http://localhost:${serverConfig.PORT}`);
+  logger.info("press ctrl + c to stop the server.");
 });
 
  
